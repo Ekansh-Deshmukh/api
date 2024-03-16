@@ -23,11 +23,12 @@ const userModel = new mongoose.Schema(
             required: [true, "Password is required"],
             minLength: [3, "Username must be at least 3 characters"],
             maxLength: [15, "Username must be at most 15 characters"],
+            match:/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/,
         },
     },
     { timestamps: true }
 );
 
-const user = mongoose.model("user", userModel);
+module.exports = mongoose.model("user", userModel);
 
-module.exports = user;
+  
